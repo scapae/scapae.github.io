@@ -17,6 +17,8 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
         var isNS = (navigator.appName == "PN") ? 1 : 0;
         if(navigator.appName == "PN") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
@@ -180,7 +182,9 @@
                 <!-- Contact Thumbnail -->
                 <div class="col-12 col-md-6">
                     <div class="contact--thumbnail">
-                        <img src="img/bg-img/25.jpg" alt="">
+                        <video width="500" height="340" autoplay="" controls="" loop="" muted="" playsinline="">
+                            <source src="img/video/global-town.mp4" type="video/mp4">
+                          </video>
                     </div>
                 </div>
 
@@ -216,31 +220,31 @@
                     </div>
                     <!-- Contact Form Area -->
                     <div class="contact-form-area mb-100">
-                        <form action="" method="">
+                        <form id="submit-form" action="" method="">
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-name" placeholder="Your Name" required>
+                                        <input type="text" class="form-control" name="name" id="contact-name" placeholder="Your Name" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="contact-lname" placeholder="Your Last Name" required>
+                                        <input type="email" class="form-control" name="last name" id="contact-lname" placeholder="Your Last Name" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="contact-number" placeholder="Your Mob Number" required>
+                                        <input type="number" class="form-control" name="number" id="contact-number" placeholder="Your Mob Number" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="contact-email" placeholder="Your Email" required>
+                                        <input type="email" class="form-control" name="email" id="contact-email" placeholder="Your Email" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="contact-subject" placeholder="Subject" required>
+                                        <input type="text" class="form-control" name="subject" id="contact-subject" placeholder="Subject" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -255,6 +259,27 @@
                         </form>
                     </div>
                 </div>
+
+                
+<script>
+    $("#submit-form").submit((e)=>{
+    e.preventDefault()
+    $.ajax({
+    url:"https://script.google.com/macros/s/AKfycbz1l7usjCKTkebDENjTfJkCYuMpm45VwkRyzxmxY8VHJmYr36rls5q6BUKo6NlVq_ajGA/exec",
+    data:$("#submit-form").serialize(),
+    method:"post",
+    success:function (response){
+    alert("Our sales team will contact you shortly. Thank you!")
+    window.location.reload()
+    //window.location.href="https://google.com"
+    },
+    error:function (err){
+    alert("Something Error")
+    
+    }
+    })
+    })
+    </script>
 
                 <div class="col-12 col-lg-6">
                     <!-- Google Maps -->
